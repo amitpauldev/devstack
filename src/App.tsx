@@ -1,9 +1,16 @@
-import "./App.css";
+import { Suspense } from "react";
+import Hero from "./components/Hero";
+import Navbar from "./components/Navbar";
+import Technology from "./components/Technology";
+import Footer from "./components/Footer";
 
 function App() {
 	return (
 		<div>
-			<h1 className="text-red-500 text-4xl">page is working</h1>
+			<Navbar />
+			<Hero />
+			<Technology />
+			<Footer />
 		</div>
 	);
 }

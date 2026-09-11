@@ -1,1 +1,30 @@
 @import "tailwindcss";
+@plugin "daisyui";
+
+:root {
+	--pink: #d91b7e;
+}
+html {
+	scroll-behavior: smooth;
+}
+body {
+	font-family: "Poppins", sans-serif;
+	background-color: white;
+	color: black;
+}
+
+@theme {
+	--color-myPink: var(--pink);
+}
+
+@layer utilities {
+	.wrapper {
+		@apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+	}
+	.gradient {
+		@apply bg-linear-to-r from-[#FF5722] via-[#D81B7E] to-[#7C3AED] bg-clip-text text-transparent;
+	}
+	.btn-gradient {
+		@apply bg-linear-to-r from-[#F97316] to-[#EC4899];
+	}
+}
