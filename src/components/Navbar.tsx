@@ -6,7 +6,7 @@ const Navbar = () => {
 		<div className="sticky top-0 z-50 bg-white border-b border-gray-200">
 			<div className="wrapper flex justify-between items-center py-4">
 				<div className="md:hidden cursor-pointer">
-					<img src={hamburger} className="w-6" />
+					<img src={hamburger} className="w-6 h-6" />
 				</div>
 
 				<div className="pl-2 sm:pl-20 md:pl-0">
