@@ -1,25 +1,51 @@
+import type { Dispatch, SetStateAction } from "react";
+import type { Technology } from "../types/technology";
 import StackItem from "./StackItem";
 
-const StackBar = () => {
+interface TechnologyGridProps {
+	myStacks: Technology[];
+	setMyStacks: Dispatch<SetStateAction<Technology[]>>;
+}
+
+const StackBar = ({ myStacks, setMyStacks }: TechnologyGridProps) => {
+	const handleRemoveAll = () => {
+		setMyStacks([]);
+	};
+
 	return (
 		<div className="bg-white border border-gray-100 rounded-2xl shadow-sm p-4 flex flex-col">
 			<h3 className="text-xl font-bold mb-3">Your Stack</h3>
-			<div className=" text-gray-500">2 Technology Selected</div>
+			<div className=" text-gray-500">
+				{myStacks.length === 1
+					? `1 Technology Selected`
+					: myStacks.length > 1
+						? `${myStacks.length} Technologies Selected`
+						: "No technologies slected yet"}
+			</div>
 			<div className="flex flex-col gap-2 mt-4">
-				<StackItem />
-				<StackItem />
-				<StackItem />
-				<StackItem />
-				<StackItem />
+				{myStacks.map((technology) => (
+					<StackItem
+						key={technology.id}
+						technology={technology}
+						setMyStacks={setMyStacks}
+					/>
+				))}
 
-				<button className="w-full text-sm font-bold bg-red-50 text-red-600 border border-red-200 rounded-lg py-2 mt-8 cursor-pointer">
-					Remove All
-				</button>
+				{myStacks.length > 0 && (
+					<button
+						onClick={handleRemoveAll}
+						className="w-full text-sm font-bold bg-red-50 text-red-600 border border-red-200 rounded-lg py-2 mt-8 cursor-pointer"
+					>
+						Remove All
+					</button>
+				)}
 			</div>
 
-			<div className="text-sm text-gray-400 mt-8 border border-dashed border-gray-400 py-8 text-center rounded-xl">
-				Your Stack is Empty
-			</div>
+			{myStacks.length === 0 && (
+				<div className="text-sm text-gray-400 mt-8 border border-dashed border-gray-400 py-8 text-center rounded-xl">
+					Your Stack is Empty
+				</div>
+			)}
 		</div>
 	);
 };

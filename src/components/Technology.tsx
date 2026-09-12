@@ -1,8 +1,10 @@
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import StackBar from "./StackBar";
 import TechnologyGrid from "./TechnologyGrid";
+import type { Technology } from "../types/technology";
 
 const Technology = () => {
+	const [myStacks, setMyStacks] = useState<Technology[]>([]);
 	return (
 		<div id="technologies" className="wrapper pt-5">
 			<div className="text-center md:text-left mb-10">
@@ -18,11 +20,11 @@ const Technology = () => {
 			<div className="flex flex-col md:flex-row gap-6">
 				<div className="flex-9/12">
 					<Suspense fallback={<p>Loading technologies...</p>}>
-						<TechnologyGrid />
+						<TechnologyGrid myStacks={myStacks} setMyStacks={setMyStacks} />
 					</Suspense>
 				</div>
 				<div className="flex-3/12">
-					<StackBar />
+					<StackBar myStacks={myStacks} setMyStacks={setMyStacks} />
 				</div>
 			</div>
 		</div>

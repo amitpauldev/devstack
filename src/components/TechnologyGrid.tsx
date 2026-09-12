@@ -1,4 +1,4 @@
-import { use } from "react";
+import { use, type Dispatch, type SetStateAction } from "react";
 import type { Technology } from "../types/technology";
 
 // const technologiesPromise = fetch("/data/technologies.json").then(
@@ -17,18 +17,28 @@ const fetchTechnologies = async (): Promise<Technology[]> => {
 	}
 	return response.json();
 };
-
 const technologiesPromise = fetchTechnologies();
 
-const TechnologyGrid = () => {
+interface TechnologyGridProps {
+	myStacks: Technology[];
+	setMyStacks: Dispatch<SetStateAction<Technology[]>>;
+}
+
+const TechnologyGrid = ({ myStacks, setMyStacks }: TechnologyGridProps) => {
 	const technologies = use(technologiesPromise);
+
+	const handleClick = (technology: Technology) => {
+		if (!myStacks.some((item) => item.id === technology.id)) {
+			setMyStacks([...myStacks, technology]);
+		}
+	};
 
 	return (
 		<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 			{technologies.map((technology) => (
 				<div
 					key={technology.id}
-					className="bg-white border border-gray-100 rounded-2xl shadow-sm p-4 flex flex-col"
+					className={`bg-white border ${myStacks.some((item) => item.id === technology.id) ? "border-myPink" : "border-gray-100"} rounded-2xl shadow-sm p-4 flex flex-col`}
 				>
 					<div className="flex justify-between gap-2 mb-4">
 						<img
@@ -53,7 +63,10 @@ const TechnologyGrid = () => {
 						<p className="text-black">⭐ {technology.rating}</p>
 					</div>
 
-					<button className="w-full bg-gray-950 hover:bg-gray-800 text-white py-2 text-sm rounded-lg mt-3 cursor-pointer">
+					<button
+						onClick={() => handleClick(technology)}
+						className="w-full bg-gray-950 hover:bg-gray-800 text-white py-2 text-sm rounded-lg mt-3 cursor-pointer"
+					>
 						Add to Stack
 					</button>
 				</div>
