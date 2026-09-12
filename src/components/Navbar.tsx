@@ -3,13 +3,13 @@ import hamburger from "/ui-icon/hamburger.png";
 
 const Navbar = () => {
 	return (
-		<div className="wrapper sticky top-0 z-50 bg-white">
-			<div className="flex justify-between items-center py-4">
+		<div className="sticky top-0 z-50 bg-white border-b border-gray-200">
+			<div className="wrapper flex justify-between items-center py-4">
 				<div className="md:hidden cursor-pointer">
 					<img src={hamburger} className="w-6" />
 				</div>
 
-				<div>
+				<div className="pl-2 sm:pl-20 md:pl-0">
 					<img src={logo} alt="Logo" className="w-32" />
 				</div>
 
@@ -31,10 +31,8 @@ const Navbar = () => {
 					</a>
 				</div>
 
-				<div className="flex items-center gap-2 text-sm">
-					<button className="px-4 py-1.5 rounded-2xl cursor-pointer">
-						Sign in
-					</button>
+				<div className="flex items-center gap-0.5 sm:gap-1.5 text-sm">
+					<button className="px-4 py-1.5 cursor-pointer">Sign in</button>
 					<button className="px-4 py-1.5 bg-myPink rounded-2xl text-white cursor-pointer">
 						Sign Up
 					</button>

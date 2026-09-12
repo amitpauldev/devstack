@@ -49,25 +49,25 @@ public/
 
 ## 🚀 Getting Started
 
-- Clone the repository
+Clone the repository
 
-git clone https://github.com/your-username/dev-stack.git
+- `git clone` https://github.com/amitpauldev/devstack
 
-- Go to the project folder
+Go to the project folder
 
-cd dev-stack
+- `cd dev-stack`
 
-- Install dependencies
+Install dependencies
 
-npm install
+- `npm install`
 
-- Run the development server
+Run the development server
 
-npm run dev
+- `npm run dev`
 
-- The project will run at:
+The project will run at:
 
-http://localhost:5173
+- `http://localhost:5173`
 
 ## 📚 React Questions & Answers
 
