@@ -1,13 +1,19 @@
 import logo from "../assets/logo-text.png";
+import hamburger from "/ui-icon/hamburger.png";
 
 const Navbar = () => {
 	return (
 		<div className="wrapper sticky top-0 z-50 bg-white">
 			<div className="flex justify-between items-center py-4">
+				<div className="md:hidden cursor-pointer">
+					<img src={hamburger} className="w-6" />
+				</div>
+
 				<div>
 					<img src={logo} alt="Logo" className="w-32" />
 				</div>
-				<div className="flex items-center space-x-4 text-sm">
+
+				<div className="hidden md:flex items-center space-x-4 text-sm">
 					<a href="#home" className="text-gray-700 hover:text-gray-900">
 						Home
 					</a>
