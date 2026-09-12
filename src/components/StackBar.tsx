@@ -1,6 +1,7 @@
 import type { Dispatch, SetStateAction } from "react";
 import type { Technology } from "../types/technology";
 import StackItem from "./StackItem";
+import { Flip, toast } from "react-toastify";
 
 interface TechnologyGridProps {
 	myStacks: Technology[];
@@ -10,6 +11,17 @@ interface TechnologyGridProps {
 const StackBar = ({ myStacks, setMyStacks }: TechnologyGridProps) => {
 	const handleRemoveAll = () => {
 		setMyStacks([]);
+		toast.error("All technologies removed", {
+			position: "bottom-right",
+			autoClose: 4000,
+			hideProgressBar: false,
+			closeOnClick: false,
+			pauseOnHover: true,
+			draggable: true,
+			progress: undefined,
+			theme: "light",
+			transition: Flip,
+		});
 	};
 
 	return (

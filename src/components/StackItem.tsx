@@ -1,5 +1,6 @@
-import React, { type Dispatch, type SetStateAction } from "react";
+import { type Dispatch, type SetStateAction } from "react";
 import type { Technology } from "../types/technology";
+import { Flip, toast } from "react-toastify";
 
 interface StackItemProps {
 	technology: Technology;
@@ -9,6 +10,18 @@ interface StackItemProps {
 const StackItem = ({ technology, setMyStacks }: StackItemProps) => {
 	const handleRemove = () => {
 		setMyStacks((prev) => prev.filter((item) => item.id !== technology.id));
+
+		toast.error(`${technology.name} removed from your stack!`, {
+			position: "bottom-right",
+			autoClose: 4000,
+			hideProgressBar: false,
+			closeOnClick: false,
+			pauseOnHover: true,
+			draggable: true,
+			progress: undefined,
+			theme: "light",
+			transition: Flip,
+		});
 	};
 	return (
 		<div className="flex justify-between items-center border-2 border-gray-200 rounded-lg p-3">

@@ -1,5 +1,6 @@
 import { use, type Dispatch, type SetStateAction } from "react";
 import type { Technology } from "../types/technology";
+import { Bounce, toast, Zoom } from "react-toastify";
 
 // const technologiesPromise = fetch("/data/technologies.json").then(
 // 	(response) => {
@@ -29,7 +30,31 @@ const TechnologyGrid = ({ myStacks, setMyStacks }: TechnologyGridProps) => {
 
 	const handleClick = (technology: Technology) => {
 		if (!myStacks.some((item) => item.id === technology.id)) {
+			toast.success(`${technology.name} added to your stack!`, {
+				position: "bottom-right",
+				autoClose: 4000,
+				hideProgressBar: false,
+				closeOnClick: false,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+				theme: "light",
+				transition: Bounce,
+			});
+
 			setMyStacks([...myStacks, technology]);
+		} else {
+			toast.warn(`${technology.name} is already in your stack!`, {
+				position: "bottom-right",
+				autoClose: 4000,
+				hideProgressBar: false,
+				closeOnClick: false,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+				theme: "light",
+				transition: Zoom,
+			});
 		}
 	};
 
@@ -67,7 +92,9 @@ const TechnologyGrid = ({ myStacks, setMyStacks }: TechnologyGridProps) => {
 						onClick={() => handleClick(technology)}
 						className="w-full bg-gray-950 hover:bg-gray-800 text-white py-2 text-sm rounded-lg mt-3 cursor-pointer"
 					>
-						Add to Stack
+						{myStacks.some((item) => item.id === technology.id)
+							? "✓ Added to Stack"
+							: "Add to Stack"}
 					</button>
 				</div>
 			))}

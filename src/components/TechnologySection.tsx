@@ -3,7 +3,7 @@ import StackBar from "./StackBar";
 import TechnologyGrid from "./TechnologyGrid";
 import type { Technology } from "../types/technology";
 
-const Technology = () => {
+const TechnologySection = () => {
 	const [myStacks, setMyStacks] = useState<Technology[]>([]);
 	return (
 		<div id="technologies" className="wrapper pt-5">
@@ -31,4 +31,4 @@ const Technology = () => {
 	);
 };
 
-export default Technology;
+export default TechnologySection;
