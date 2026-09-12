@@ -1,4 +1,3 @@
-import React from "react";
 import StackItem from "./StackItem";
 
 const StackBar = () => {
